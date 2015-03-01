@@ -1,0 +1,11 @@
+{
+  "name": "hashtangular-node",
+  "version": "0.0.0",
+  "dependencies": {
+    "temboo": "^1.7.7"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=0.10.0"
+  }
+}
