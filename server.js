@@ -30,6 +30,9 @@ function processRequest(httpPostData, successCallback, errorCallback) {
 
     tembooProxy.setDefaultInputs('jsTweets', tweetsInputs);
 
+    // Whitelist client inputs
+    tembooProxy.allowUserInputs('jsTweets', 'Query');
+
     // Execute the requested Choreo
     tembooProxy.execute(httpPostData['temboo_proxy'], true, successCallback, errorCallback);
 }
