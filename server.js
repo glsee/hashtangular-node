@@ -39,6 +39,17 @@ function processRequest(httpPostData, successCallback, errorCallback) {
 
 // Initialize web server
 http.createServer(function(request, response) {
+    response.setHeader('Access-Control-Allow-Origin', '*');
+    response.setHeader('Access-Control-Request-Method', '*');
+    response.setHeader('Access-Control-Allow-Methods', 'OPTIONS, POST');
+    response.setHeader('Access-Control-Allow-Headers', 'X-Requested-With');
+
+    if (request.method === 'OPTIONS' ) {
+        response.writeHead(200);
+        response.end();
+        return;
+    }
+
     // Examine requested URL
     var resource = url.parse(request.url).pathname;
 
