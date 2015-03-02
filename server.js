@@ -72,6 +72,9 @@ http.createServer(function(request, response) {
                     response.end(result);
                 },
                 function(err){
+                    if (typeof err !== 'string') {
+                        err = err.toString();
+                    }
                     console.log('Error: ' + err);
                     response.end(err);
                 }
