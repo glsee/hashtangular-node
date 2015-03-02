@@ -32,6 +32,7 @@ function processRequest(httpPostData, successCallback, errorCallback) {
 
     // Whitelist client inputs
     tembooProxy.allowUserInputs('jsTweets', 'Query');
+    tembooProxy.allowUserInputs('jsTweets', 'MaxId');
 
     // Execute the requested Choreo
     tembooProxy.execute(httpPostData['temboo_proxy'], true, successCallback, errorCallback);
