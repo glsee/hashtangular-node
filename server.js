@@ -3,7 +3,7 @@ var qs = require('querystring');
 var url = require('url');
 
 // The port to listen for incoming HTTP requests on
-var LISTEN_PORT = 1337;
+var LISTEN_PORT = process.env.PORT || 3000;
 
 function processRequest(httpPostData, successCallback, errorCallback) {
     var Tproxy = require('temboo/core/tembooproxy');
