@@ -73,7 +73,7 @@ http.createServer(function(request, response) {
                 },
                 function(err){
                     if (typeof err !== 'string') {
-                        err = err.toString();
+                        err = JSON.stringify(err);
                     }
                     console.log('Error: ' + err);
                     response.end(err);
