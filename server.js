@@ -2,8 +2,7 @@ var http = require('http');
 var qs = require('querystring');
 var url = require('url');
 
-// The port to listen for incoming HTTP requests on
-var LISTEN_PORT = process.env.PORT || 3000;
+var config = require('./config');
 
 function processRequest(httpPostData, successCallback, errorCallback) {
     var Tproxy = require('temboo/core/tembooproxy');
@@ -11,7 +10,11 @@ function processRequest(httpPostData, successCallback, errorCallback) {
     var Twitter = require('temboo/Library/Twitter/Search');
 
     // Initialize Temboo session
-    var session = new Tsession.TembooSession("glsee", "myFirstApp", "3f0213bdc3b540679a663b621ca997a0");
+    var session = new Tsession.TembooSession(
+        config.TEMBOO_ACCOUNT_NAME,
+        config.TEMBOO_APP_NAME,
+        config.TEMBOO_APP_KEY
+    );
 
     // Initialize our request proxy
     var tembooProxy = new Tproxy.TembooProxy();
@@ -85,4 +88,4 @@ http.createServer(function(request, response) {
         // Set content type for JSON response
         response.writeHeader(200, {"Content-Type": "application/json"});
     }
-}).listen(LISTEN_PORT);
+}).listen(config.LISTEN_PORT);
